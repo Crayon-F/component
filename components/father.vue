@@ -28,6 +28,16 @@
     <!-- eventBus -->
     <eventBus></eventBus>
     <button @click="eventBus">eventBus</button>
+
+    <!-- slot -->
+    <me-slot>
+      <!-- v-slot必须是template模式 -->
+      <template v-slot:header="{a,b,c}">
+        header内容 a:{{a}} b:{{b}} c:{{c}}
+      </template>
+      <template v-slot:content>content内容</template>
+      <template v-slot:footer>footer内容</template>
+    </me-slot>
   </div>
 </template>
 <script>
@@ -46,6 +56,9 @@ import ref from './ref'
 // eventBus
 import eventBus from './eventBus'
 
+// slot
+import slot from './slot'
+
 export default {
   // 1.父像孙子传值，可以通过provideh和inject方式
   provide () { //提供者，将自己的data暴露出去
@@ -57,7 +70,8 @@ export default {
     son2,
     listeners,
     ref,
-    eventBus
+    eventBus,
+    'me-slot': slot
   },
   name: "father",
   data () {
