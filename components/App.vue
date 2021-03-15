@@ -1,13 +1,13 @@
 <template>
   <div>
-    <el-form></el-form>
+    <father></father>
   </div>
 </template>
 <script>
-import elForm from './el-form/index'
+import father from './components/father'
 export default {
   components: {
-    elForm
+    father
   }
 }
 </script>
