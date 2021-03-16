@@ -6,7 +6,7 @@
   </div>
 </template>
 <script>
-import Schema from 'async-validate'
+import Schema from 'async-validator'
 export default {
   inject: ['elForm'],
   name: 'el-form-item',
@@ -25,24 +25,32 @@ export default {
       errMesg: ''
     }
   },
-  mounted () {
-    this.$on('validate', function () {
+  methods:{
+    validate(){
       // 去拿校验规则
       let rules = this.elForm.rules[this.prop];
       let val = this.elForm.model[this.prop]
-      console.log(this.prop, val)
       let descriptor = {
         // 值：校验规则
         [this.prop]: rules
       }
       let schema = new Schema(descriptor)
       let source = { [this.prop]: val }
-      console.log(source)
-      schema.validate(source, function (err, res) {
-        console.dir(res.errors);
+      return schema.validate(source, (err)=>{
+        if(err){
+          console.log(err[0].message)
+          this.errMesg = err[0].message;
+          return;
+        }
+        this.errMesg = ''
       });
+    }
+      
+  },
+  mounted () {
+    this.$on('validate', function () {
+      this.validate()
     })
   }
 }
 </script>
-
