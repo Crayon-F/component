@@ -13,7 +13,7 @@
       <el-input v-model="ruleForm.password"></el-input>
     </el-form-item>
     <el-form-item>
-    <button @click="submitForm('ruleForm')">提交</button>
+      <button @click="submitForm('ruleForm')">提交</button>
       <!-- <el-button type="primary"
                  @click="submitForm('ruleForm')">立即创建</el-button>
       <el-button @click="resetForm('ruleForm')">重置</el-button> -->
