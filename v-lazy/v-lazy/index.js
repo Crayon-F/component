@@ -5,6 +5,7 @@ export default{
     const _Vue = Vue;
     // v-lazy是一个指令，需要注册一个指令的方法
     let LazyClass = Lazy(_Vue);
+    console.log(options)
     let lazy = new LazyClass(options)
     _Vue.directive('lazy',{
       // 保证当前的add方法就是执行，this指的是lazy
