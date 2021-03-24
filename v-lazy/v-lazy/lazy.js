@@ -21,7 +21,7 @@ export default (Vue)=>{
         // 图片开始加载
         loadImageAsync(this.src,()=>{
           // 成功
-          this.state.loading = false;
+          this.state.loading = true;
           this.elRender(this,'loaded')
         },()=>{
           // 失败
